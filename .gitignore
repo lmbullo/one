@@ -14,5 +14,9 @@ nohup.out
 failures.log
 .logs/
 /logs
+
+# Outputs (agent run summaries)
+.outputs/
+
 # Secrets (never commit)
 .env

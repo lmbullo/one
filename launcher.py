@@ -1,7 +1,7 @@
 """Task-queue launcher that spawns ephemeral agent_worker processes.
 
 Polls tasks.jsonl, runs one agent_worker.py subprocess per task under a hard
-wall-clock timeout, writes each worker's summary into outputs/, and runs
+wall-clock timeout, writes each worker's summary into .outputs/, and runs
 silently: launcher diagnostics go to a per-run timestamped file under `.logs/`.
 """
 
@@ -19,7 +19,7 @@ WORKER_PY = str(_VENV_PY) if _VENV_PY.exists() else sys.executable
 WORKER_PY = os.environ.get("AGENT_WORKER_PY", WORKER_PY)
 
 TASK_QUEUE = "tasks.jsonl"  # One task per line
-OUTPUT_DIR = "outputs"
+OUTPUT_DIR = ".outputs"  # Agent run summaries (dot-dir, gitignored)
 FAILURES_LOG = "failures.log"
 AGENT_TIMEOUT = 1800  # 30 minutes hard kill
 

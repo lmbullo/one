@@ -9,7 +9,7 @@ Task format follows README.md:
 
     {"name": "...", "goal": "...", "path": "/home/you/project"}
 
-    - name  : required, used for the summary filename in outputs/.
+    - name  : required, used for the summary filename in .outputs/.
     - goal  : the task to run; falls back to description.
     - path  : the project root the agent works in (defaults to this repo).
 """
