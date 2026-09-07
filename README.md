@@ -43,3 +43,12 @@ Fields:
 - `name` (required) — used for the summary filename in `outputs/`.
 - `goal` — the task to run; falls back to `description`.
 - `path` — the project root the agent works in (defaults to this repo).
+
+Or use the interactive submitter — it first asks for the task `name`, then the
+`goal`, and optionally the project `path` (defaults to this repo). It
+**appends** one JSON line to `tasks.jsonl`, so tasks already in the queue are
+never overwritten:
+
+```bash
+.venv/bin/python submit_task.py
+```
