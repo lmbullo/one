@@ -52,7 +52,7 @@ _load_dotenv()
 
 DEEPSEEK_BASE_URL = os.environ.get("DEEPSEEK_BASE_URL", "https://api.deepseek.com")
 DEEPSEEK_MODEL = os.environ.get("DEEPSEEK_MODEL", "deepseek-v4-flash")
-MAX_STEPS = int(os.environ.get("AGENT_MAX_STEPS", "25"))
+MAX_STEPS = int(os.environ.get("AGENT_MAX_STEPS", "250"))
 TIMEOUT = float(os.environ.get("AGENT_HTTP_TIMEOUT", "120"))
 # DeepSeek V4 runs thinking/reasoning mode by default, which puts prose in
 # `reasoning_content` and can leave `content` empty -> "(no final content)".

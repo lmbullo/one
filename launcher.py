@@ -21,7 +21,7 @@ WORKER_PY = os.environ.get("AGENT_WORKER_PY", WORKER_PY)
 TASK_QUEUE = "tasks.jsonl"  # One task per line
 OUTPUT_DIR = ".outputs"  # Agent run summaries (dot-dir, gitignored)
 FAILURES_LOG = "failures.log"
-AGENT_TIMEOUT = 1800  # 30 minutes hard kill
+AGENT_TIMEOUT = 5400  # 90 minutes hard kill
 
 # Per-run log: one timestamped file per launcher process, under .logs/.
 # Stopping and restarting the launcher starts a fresh log for that run.
