@@ -12,3 +12,5 @@ nohup.out
 
 # Logs
 failures.log
+# Secrets (never commit)
+.env

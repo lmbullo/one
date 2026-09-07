@@ -14,6 +14,38 @@ import httpx
 
 import axm_tools
 
+
+# --------------------------------------------------------------------------- #
+# Config loading: `.env` (gitignored) authoritatively overrides a stale shell
+# DEEPSEEK_API_KEY. Explicit env vars still beat `.env`.
+# --------------------------------------------------------------------------- #
+
+def _load_dotenv():
+    path = Path(__file__).resolve().parent / ".env"
+    if not path.exists():
+        return
+    for line in path.read_text().splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, _, val = line.partition("=")
+        key, val = key.strip(), val.strip().strip('"').strip("'")
+        # explicit real env vars win; empty/placeholder env keys lose to .env
+        if os.environ.get(key):
+            if _looks_placeholder(os.environ[key]):
+                os.environ[key] = val
+            continue
+        os.environ[key] = val
+
+
+def _looks_placeholder(val: str) -> bool:
+    val = val.strip()
+    low = val.lower()
+    return not val or "YOUR_" in low or "sk-99f" in low or "placeholder" in low or len(val) < 20
+
+
+_load_dotenv()
+
 # --------------------------------------------------------------------------- #
 # Config
 # --------------------------------------------------------------------------- #
