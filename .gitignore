@@ -20,3 +20,5 @@ failures.log
 
 # Secrets (never commit)
 .env
+# Safety backups (local only)
+backups/
